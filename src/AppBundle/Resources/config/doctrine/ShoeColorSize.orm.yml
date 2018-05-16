@@ -1,0 +1,12 @@
+AppBundle\Entity\ShoeColorSize:
+    type: entiy
+    table: shoe_color_size
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        size:
+            type: float
+        quantity:
+            type: smallint

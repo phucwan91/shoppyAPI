@@ -1,0 +1,17 @@
+AppBundle\Entity\Category:
+    type: entiy
+    table: category
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 100
+        slug:
+            type: string
+            length: 100
+    manyToOne:
+        gender:
+            targetEntity: Gender
