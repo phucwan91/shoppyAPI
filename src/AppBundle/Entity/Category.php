@@ -25,11 +25,6 @@ class Category
     private $gender;
 
     /**
-     * @var int
-     */
-    private $brand;
-
-    /**
      * @var Shoe[]
      */
     private $shoes;

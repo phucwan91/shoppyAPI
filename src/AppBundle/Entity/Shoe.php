@@ -15,6 +15,11 @@ class Shoe
     private $category;
 
     /**
+     * @var Brand
+     */
+    private $brand;
+
+    /**
      * @var string
      */
     private $name;
@@ -38,4 +43,9 @@ class Shoe
      * @var ShoeColor[]
      */
     private $colors;
+
+    /**
+     * @var int
+     */
+    private $quantity;
 }

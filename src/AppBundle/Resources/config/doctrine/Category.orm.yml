@@ -12,6 +12,9 @@ AppBundle\Entity\Category:
         slug:
             type: string
             length: 100
+    oneToMany:
+        shoes:
+            targetEntity: Shoe
     manyToOne:
         gender:
             targetEntity: Gender

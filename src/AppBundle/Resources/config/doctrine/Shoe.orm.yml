@@ -12,3 +12,11 @@ AppBundle\Entity\Shoe:
         slug:
             type: string
             length: 100
+        quantity:
+            type: integer
+    oneToMany:
+        colors:
+            targetEntity: Color
+    manyToOne:
+        gender:
+            targetEntity: Gender

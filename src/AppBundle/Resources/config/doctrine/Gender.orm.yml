@@ -9,6 +9,6 @@ AppBundle\Entity\Gender:
         name:
             type: string
             length: 100
-        slug:
+        code:
             type: string
             length: 100
