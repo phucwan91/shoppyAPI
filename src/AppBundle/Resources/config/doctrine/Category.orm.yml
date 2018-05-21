@@ -1,5 +1,5 @@
 AppBundle\Entity\Category:
-    type: entiy
+    type: entity
     table: category
     id:
         id:
@@ -12,9 +12,13 @@ AppBundle\Entity\Category:
         slug:
             type: string
             length: 100
+        position:
+            type: integer
     oneToMany:
         shoes:
-            targetEntity: Shoe
+            targetEntity: AppBundle\Entity\Shoe
+            mappedBy: category
     manyToOne:
         gender:
-            targetEntity: Gender
+            targetEntity: AppBundle\Entity\Gender
+            inversedBy: categories

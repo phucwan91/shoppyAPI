@@ -1,0 +1,12 @@
+services:
+    app.manager.category:
+        class: AppBundle\EntityManager\CategoryManager
+        arguments:
+            - '@doctrine'
+            - 'AppBundle\Entity\Category'
+
+    app.manager.shoe:
+        class: AppBundle\EntityManager\ShoeManager
+        arguments:
+            - '@doctrine'
+            - 'AppBundle\Entity\Shoe'

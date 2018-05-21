@@ -1,5 +1,5 @@
 AppBundle\Entity\Shoe:
-    type: entiy
+    type: entity
     table: shoe
     id:
         id:
@@ -12,11 +12,27 @@ AppBundle\Entity\Shoe:
         slug:
             type: string
             length: 100
+        price:
+            type: float
+        description:
+            type: text
+        releaseDate:
+            type: date
+        position:
+            type: integer
         quantity:
             type: integer
     oneToMany:
         colors:
-            targetEntity: Color
+            targetEntity: AppBundle\Entity\ShoeColorImage
+            mappedBy: shoe
+        sizes:
+            targetEntity: AppBundle\Entity\ShoeColorSize
+            mappedBy: shoe
     manyToOne:
-        gender:
-            targetEntity: Gender
+        category:
+            targetEntity: AppBundle\Entity\Category
+            inversedBy: shoes
+        brand:
+            targetEntity: AppBundle\Entity\Brand
+            inversedBy: shoes

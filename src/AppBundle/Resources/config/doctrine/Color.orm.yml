@@ -1,5 +1,5 @@
 AppBundle\Entity\Color:
-    type: entiy
+    type: entity
     table: color
     id:
         id:

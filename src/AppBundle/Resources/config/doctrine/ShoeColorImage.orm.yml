@@ -1,15 +1,20 @@
-AppBundle\Entity\ShoeColorSize:
+AppBundle\Entity\ShoeColorImage:
     type: entity
-    table: shoe_color_size
+    table: shoe_color_image
     id:
         id:
             type: integer
             generator: { strategy: AUTO }
     fields:
-        size:
-            type: float
-        quantity:
-            type: smallint
+        small:
+            type: string
+            length: 100
+        medium:
+            type: string
+            length: 100
+        large:
+            type: string
+            length: 100
     manyToOne:
         shoe:
             targetEntity: AppBundle\Entity\Shoe

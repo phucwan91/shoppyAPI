@@ -1,5 +1,5 @@
 AppBundle\Entity\Brand:
-    type: entiy
+    type: entity
     table: brand
     id:
         id:

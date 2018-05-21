@@ -1,5 +1,5 @@
 AppBundle\Entity\Gender:
-    type: entiy
+    type: entity
     table: gender
     id:
         id:
@@ -12,3 +12,7 @@ AppBundle\Entity\Gender:
         code:
             type: string
             length: 100
+    oneToMany:
+        categories:
+            targetEntity: AppBundle\Entity\Category
+            mappedBy: gender

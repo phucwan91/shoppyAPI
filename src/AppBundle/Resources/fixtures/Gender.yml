@@ -1,0 +1,48 @@
+AppBundle\Entity\Gender:
+    gender_1:
+        name: Nam
+        code: m
+    gender_2:
+        name: Nữ
+        code: f
+
+AppBundle\Entity\Category:
+    category_{1..10}:
+        name: 'Category <current()>'
+        slug: 'slug-<current()>'
+        gender: "@gender*"
+
+AppBundle\Entity\Brand:
+    brand_{1..10}:
+        name: '<name()>'
+        slug: '<name()>'
+
+AppBundle\Entity\Shoe:
+    shoe_{1..50}:
+        category: "@category*"
+        brand: "@brand*"
+        name: '<name()>'
+        slug: 'slug'
+        price: '<numberBetween(1, 200)>'
+        description: '<text(50)>'
+        quantity: 0
+
+AppBundle\Entity\Color:
+    color_{1..10}:
+        name: '<name()>'
+        code: '<numberBetween(100, 200)>'
+
+AppBundle\Entity\ShoeColorSize:
+    size_{1..200}:
+        shoe: '@shoe*'
+        color: '@color*'
+        size: "<randomElement([36, 37, 38, 39, 40, 41, 42, 43, 44, 45])>"
+        quantity: '<numberBetween(0, 25)>'
+
+AppBundle\Entity\ShoeColorImage:
+    image_{1..200}:
+        shoe: '@shoe*'
+        color: '@color*'
+        large: '<text(20)>'
+        medium: '<text(20)>'
+        small: '<text(20)>'
