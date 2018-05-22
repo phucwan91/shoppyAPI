@@ -24,10 +24,7 @@ AppBundle\Entity\Shoe:
             type: integer
     oneToMany:
         colors:
-            targetEntity: AppBundle\Entity\ShoeColorImage
-            mappedBy: shoe
-        sizes:
-            targetEntity: AppBundle\Entity\ShoeColorSize
+            targetEntity: AppBundle\Entity\ShoeColor
             mappedBy: shoe
     manyToOne:
         category:

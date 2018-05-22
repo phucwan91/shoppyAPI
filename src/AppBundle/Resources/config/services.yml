@@ -10,3 +10,8 @@ services:
         arguments:
             - '@doctrine'
             - 'AppBundle\Entity\Shoe'
+
+    app.pagination_factory:
+        class: AppBundle\Pagination\PaginationFactory
+        arguments:
+            - '@router'

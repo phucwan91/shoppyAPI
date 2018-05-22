@@ -16,7 +16,5 @@ AppBundle\Entity\ShoeColorImage:
             type: string
             length: 100
     manyToOne:
-        shoe:
-            targetEntity: AppBundle\Entity\Shoe
-        color:
-            targetEntity: AppBundle\Entity\Color
+        shoeColor:
+            targetEntity: AppBundle\Entity\ShoeColor

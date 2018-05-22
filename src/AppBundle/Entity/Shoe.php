@@ -16,11 +16,13 @@ class Shoe
 
     /**
      * @var int
+     * @Serializer\Expose()
      */
     private $category;
 
     /**
      * @var Brand
+     * @Serializer\Expose()
      */
     private $brand;
 
@@ -37,26 +39,32 @@ class Shoe
 
     /**
      * @var float
+     * @Serializer\Expose()
      */
     private $price;
 
     /**
      * @var string
+     * @Serializer\Expose()
      */
     private $description;
 
     /**
-     * @var ShoeColorImage[]
+     * @var ShoeColor[]
+     * @Serializer\Expose()
      */
     private $colors;
 
-    /** @var ShoeColorSize[] */
-    private $sizes;
-
-    /** @var int */
+    /**
+     * @var int
+     * @Serializer\Expose()
+     */
     private $position;
 
-    /** @var \DateTime */
+    /**
+     * @var \DateTime
+     * @Serializer\Expose()
+     */
     private $releaseDate;
 
     /**
@@ -185,23 +193,7 @@ class Shoe
     }
 
     /**
-     * @return ShoeColorSize[]
-     */
-    public function getSizes()
-    {
-        return $this->sizes;
-    }
-
-    /**
-     * @param ShoeColorSize[] $sizes
-     */
-    public function setSizes($sizes)
-    {
-        $this->sizes = $sizes;
-    }
-
-    /**
-     * @return ShoeColorImage[]
+     * @return ShoeColor[]
      */
     public function getColors()
     {
@@ -209,7 +201,7 @@ class Shoe
     }
 
     /**
-     * @param ShoeColorImage[] $colors
+     * @param ShoeColor[] $colors
      */
     public function setColors($colors)
     {

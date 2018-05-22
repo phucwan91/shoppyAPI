@@ -11,7 +11,5 @@ AppBundle\Entity\ShoeColorSize:
         quantity:
             type: smallint
     manyToOne:
-        shoe:
-            targetEntity: AppBundle\Entity\Shoe
-        color:
-            targetEntity: AppBundle\Entity\Color
+        shoeColor:
+            targetEntity: AppBundle\Entity\ShoeColor

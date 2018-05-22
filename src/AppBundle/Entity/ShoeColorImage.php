@@ -2,73 +2,40 @@
 
 namespace AppBundle\Entity;
 
+use JMS\Serializer\Annotation as Serializer;
+
+/**
+ * @Serializer\ExclusionPolicy("all")
+ */
 class ShoeColorImage
 {
-    /** @var int */
+    /**
+     * @var int
+     */
     private $id;
 
-    /** @var Shoe */
-    private $shoe;
+    /**
+     * @var ShoeColor
+     */
+    private $shoeColor;
 
-    /** @var Color */
-    private $color;
-
-    /** @var string */
+    /**
+     * @var string
+     * @Serializer\Expose()
+     */
     private $small;
 
-    /** @var string */
+    /**
+     * @var string
+     * @Serializer\Expose()
+     */
     private $medium;
 
-    /** @var string */
+    /**
+     * @var string
+     * @Serializer\Expose()
+     */
     private $large;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return Shoe
-     */
-    public function getShoe()
-    {
-        return $this->shoe;
-    }
-
-    /**
-     * @param Shoe $shoe
-     */
-    public function setShoe($shoe)
-    {
-        $this->shoe = $shoe;
-    }
-
-    /**
-     * @return Color
-     */
-    public function getColor()
-    {
-        return $this->color;
-    }
-
-    /**
-     * @param Color $color
-     */
-    public function setColor($color)
-    {
-        $this->color = $color;
-    }
 
     /**
      * @return string
@@ -116,5 +83,29 @@ class ShoeColorImage
     public function setLarge($large)
     {
         $this->large = $large;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return ShoeColor
+     */
+    public function getShoeColor()
+    {
+        return $this->shoeColor;
+    }
+
+    /**
+     * @param ShoeColor $shoeColor
+     */
+    public function setShoeColor($shoeColor)
+    {
+        $this->shoeColor = $shoeColor;
     }
 }

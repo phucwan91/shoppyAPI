@@ -2,6 +2,11 @@
 
 namespace AppBundle\Entity;
 
+use JMS\Serializer\Annotation as Serializer;
+
+/**
+ * @Serializer\ExclusionPolicy("all")
+ */
 class Color
 {
     /**
@@ -11,11 +16,13 @@ class Color
 
     /**
      * @var string
+     * @Serializer\Expose()
      */
     private $name;
 
     /**
      * @var string
+     * @Serializer\Expose()
      */
     private $code;
 

@@ -1,7 +1,6 @@
 app.home:
     path: /home
 
-
 app.shoe.list:
     path: /shoes
     defaults: { _controller: AppBundle:Shoe:list }

@@ -10,6 +10,7 @@ AppBundle\Entity\Category:
     category_{1..10}:
         name: 'Category <current()>'
         slug: 'slug-<current()>'
+        position: '<current()>'
         gender: "@gender*"
 
 AppBundle\Entity\Brand:
@@ -25,6 +26,8 @@ AppBundle\Entity\Shoe:
         slug: 'slug'
         price: '<numberBetween(1, 200)>'
         description: '<text(50)>'
+        position: '<current()>'
+        releaseDate: '<dateTimeBetween("-200 days", "now")>'
         quantity: 0
 
 AppBundle\Entity\Color:
@@ -32,17 +35,20 @@ AppBundle\Entity\Color:
         name: '<name()>'
         code: '<numberBetween(100, 200)>'
 
+AppBundle\Entity\ShoeColor:
+    shoeColor_{1..200}:
+        shoe: '@shoe_*'
+        color: '@color*'
+
 AppBundle\Entity\ShoeColorSize:
     size_{1..200}:
-        shoe: '@shoe*'
-        color: '@color*'
+        shoeColor: '@shoeColor*'
         size: "<randomElement([36, 37, 38, 39, 40, 41, 42, 43, 44, 45])>"
         quantity: '<numberBetween(0, 25)>'
 
 AppBundle\Entity\ShoeColorImage:
     image_{1..200}:
-        shoe: '@shoe*'
-        color: '@color*'
-        large: '<text(20)>'
-        medium: '<text(20)>'
-        small: '<text(20)>'
+        shoeColor: '@shoeColor*'
+        large: 'large_image.jpg'
+        medium: 'medium_image.png'
+        small: 'small_image.jpg'

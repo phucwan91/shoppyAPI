@@ -1,0 +1,20 @@
+AppBundle\Entity\ShoeColor:
+    type: entity
+    table: shoe_color
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    oneToMany:
+        images:
+            targetEntity: AppBundle\Entity\ShoeColorImage
+            mappedBy: shoeColor
+        sizes:
+            targetEntity: AppBundle\Entity\ShoeColorSize
+            mappedBy: shoeColor
+    manyToOne:
+        shoe:
+            targetEntity: AppBundle\Entity\Shoe
+            inversedBy: shoes
+        color:
+            targetEntity: AppBundle\Entity\Color

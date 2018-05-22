@@ -2,12 +2,20 @@
 
 namespace AppBundle\Entity;
 
+use JMS\Serializer\Annotation as Serializer;
+
+/**
+ * @Serializer\ExclusionPolicy("all")
+ */
 class Brand
 {
     /** @var int */
     private $id;
 
-    /** @var string */
+    /**
+     * @var string
+     * @Serializer\Expose()
+     */
     private $name;
 
     /** @var string */

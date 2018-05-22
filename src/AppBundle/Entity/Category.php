@@ -2,6 +2,11 @@
 
 namespace AppBundle\Entity;
 
+use JMS\Serializer\Annotation as Serializer;
+
+/**
+ * @Serializer\ExclusionPolicy("all")
+ */
 class Category
 {
     /**
@@ -11,6 +16,7 @@ class Category
 
     /**
      * @var string
+     * @Serializer\Expose()
      */
     private $name;
 
@@ -29,7 +35,9 @@ class Category
      */
     private $shoes;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     private $position;
 
     /**

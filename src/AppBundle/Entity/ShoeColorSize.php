@@ -2,21 +2,33 @@
 
 namespace AppBundle\Entity;
 
+use JMS\Serializer\Annotation as Serializer;
+
+/**
+ * @Serializer\ExclusionPolicy("all")
+ */
 class ShoeColorSize
 {
-    /** @var int */
+    /**
+     * @var int
+     */
     private $id;
 
-    /** @var Shoe */
-    private $shoe;
+    /**
+     * @var ShoeColor
+     */
+    private $shoeColor;
 
-    /** @var Color */
-    private $color;
-
-    /** @var int */
+    /**
+     * @var int
+     * @Serializer\Expose()
+     */
     private $size;
 
-    /** @var int */
+    /**
+     * @var int
+     * @Serializer\Expose()
+     */
     private $quantity;
 
     /**
@@ -25,38 +37,6 @@ class ShoeColorSize
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return Shoe
-     */
-    public function getShoe()
-    {
-        return $this->shoe;
-    }
-
-    /**
-     * @param Shoe $shoe
-     */
-    public function setShoe($shoe)
-    {
-        $this->shoe = $shoe;
-    }
-
-    /**
-     * @return Color
-     */
-    public function getColor()
-    {
-        return $this->color;
-    }
-
-    /**
-     * @param Color $color
-     */
-    public function setColor($color)
-    {
-        $this->color = $color;
     }
 
     /**
@@ -89,5 +69,21 @@ class ShoeColorSize
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+    }
+
+    /**
+     * @return ShoeColor
+     */
+    public function getShoeColor()
+    {
+        return $this->shoeColor;
+    }
+
+    /**
+     * @param ShoeColor $shoeColor
+     */
+    public function setShoeColor($shoeColor)
+    {
+        $this->shoeColor = $shoeColor;
     }
 }
