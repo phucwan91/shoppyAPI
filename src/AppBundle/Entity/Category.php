@@ -17,11 +17,14 @@ class Category
     /**
      * @var string
      * @Serializer\Expose()
+     * @Serializer\Groups({"detail"})
      */
     private $name;
 
     /**
      * @var string
+     * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $slug;
 

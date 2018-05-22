@@ -1,4 +1,10 @@
 services:
+    app.manager.gender:
+        class: AppBundle\EntityManager\GenderManager
+        arguments:
+            - '@doctrine'
+            - 'AppBundle\Entity\Gender'
+
     app.manager.category:
         class: AppBundle\EntityManager\CategoryManager
         arguments:
@@ -10,8 +16,14 @@ services:
         arguments:
             - '@doctrine'
             - 'AppBundle\Entity\Shoe'
+            - '@app.pagination_factory'
 
     app.pagination_factory:
         class: AppBundle\Pagination\PaginationFactory
         arguments:
             - '@router'
+
+    app.link_serialization_subscriber:
+        class: AppBundle\Serializer\LinkSerializationSubscriber
+        tags:
+            - { name: jms_serializer.event_subscriber }

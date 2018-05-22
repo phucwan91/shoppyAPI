@@ -32,6 +32,11 @@ class Gender
     private $categories;
 
     /**
+     * @var Shoe[]
+     */
+    private $shoes;
+
+    /**
      * @return int
      */
     public function getId()
@@ -85,5 +90,21 @@ class Gender
     public function setCategories($categories)
     {
         $this->categories = $categories;
+    }
+
+    /**
+     * @return Shoe[]
+     */
+    public function getShoes()
+    {
+        return $this->shoes;
+    }
+
+    /**
+     * @param Shoe[] $shoes
+     */
+    public function setShoes($shoes)
+    {
+        $this->shoes = $shoes;
     }
 }

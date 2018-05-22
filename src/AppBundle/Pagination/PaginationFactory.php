@@ -22,8 +22,10 @@ class PaginationFactory
 
     public function createCollection(
         QueryBuilder $queryBuilder,
+        Request $request,
         $maxPerPage,
-        $page, $route,
+        $page,
+        $route,
         array $routeParams = []
     ) {
         $adapter = new DoctrineORMAdapter($queryBuilder);
@@ -43,6 +45,7 @@ class PaginationFactory
             $pagerFanta->getNbPages()
         );
 
+        $routeParams = array_merge($routeParams, $request->query->all());
         $createLinkUrl = function ($pageNum) use ($route, $routeParams) {
             return $this->router->generate($route, array_merge($routeParams, ['page' => $pageNum]));
         };
