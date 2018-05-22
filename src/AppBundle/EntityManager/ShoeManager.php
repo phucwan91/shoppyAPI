@@ -24,6 +24,14 @@ class ShoeManager extends AbstractManager
         return $this->createQueryBuilder('item')
             ->setMaxResults($limit)
             ->setFirstResult($offset)
+            ->orderBy('item.position')
+        ;
+    }
+
+    public function findAllOrderedByPositionQueryBuilder($limit, $offset)
+    {
+        return $this->findAllQueryBuilder($limit, $offset)
+            ->orderBy('item.position')
         ;
     }
 
@@ -35,5 +43,14 @@ class ShoeManager extends AbstractManager
         $qb = $this->findAllQueryBuilder($itemsPerPage, ($page*($itemsPerPage-1)));
 
         return $this->paginationFactory->createCollection($qb, $request, $itemsPerPage, $page, 'app.shoe.list');
+    }
+
+    public function findFeaturedShoes($limit, $offset)
+    {
+        return $this->findAllQueryBuilder($limit, $offset)
+            ->andWhere('item.featuredPriority = 0')
+            ->getQuery()
+            ->getResult()
+        ;
     }
 }

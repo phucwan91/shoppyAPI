@@ -13,27 +13,20 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-        // replace this example code with whatever you need
         return $this->render('default/index.html.twig');
     }
 
     public function initAction(Request $request)
     {
-        $genders    = $this->get('app.manager.gender')->findAll();
-        $categories = $this->get('app.manager.category')->findAll();
-        $shoes      = $this->get('app.manager.shoe')->getPaginatedCollection($request);
+        $data['categories'] = $this->get('app.manager.category')->getCategoryTree();
 
-        $data['genders'] = [
-            'items' => $genders
+        $shoeManager = $this->get('app.manager.shoe');
+
+        $data['shoes'] = [
+            'featured' => $shoeManager->findFeaturedShoes(10, 0),
         ];
-
-        $data['categories'] = [
-            'items' => $categories
-        ];
-
-        $data['shoes'] = $shoes;
 
         return new Response(
             $this->get('jms_serializer')->serialize(

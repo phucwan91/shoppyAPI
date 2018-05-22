@@ -1,17 +1,17 @@
-AppBundle\Entity\Gender:
-    gender_1:
-        name: Nam
-        code: m
-    gender_2:
-        name: Nữ
-        code: f
-
 AppBundle\Entity\Category:
+    parent_category_1:
+        name: 'Nam'
+        slug: 'nam'
+        position: 1
+    parent_category_2:
+        name: 'Nữ'
+        slug: 'nu'
+        position: 2
     category_{1..10}:
-        name: 'Category <current()>'
-        slug: 'slug-<current()>'
+        name (unique): "<randomElement(['Giày chạy bộ', 'Giày leo núi', 'Giày đi ruộng', 'Giày đá banh', 'Giày cầu lông', 'Guốc', 'Dép trong nhà', 'Dép lào', 'Giày tây', 'Giày'])>"
+        slug: "giay-<current()>"
         position: '<current()>'
-        gender: "@gender*"
+        parent: "@parent_category*"
 
 AppBundle\Entity\Brand:
     brand_{1..10}:

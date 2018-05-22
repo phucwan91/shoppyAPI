@@ -20,8 +20,24 @@ AppBundle\Entity\Shoe:
             type: date
         position:
             type: integer
+            options:
+                unsigned: true
+                default: 0
+        featuredPriority:
+            type: integer
+            options:
+                unsigned: true
+                default: 0
+        salesCount:
+            type: integer
+            options:
+                unsigned: true
+                default: 0
         quantity:
             type: integer
+            options:
+                unsigned: true
+                default: 0
     oneToMany:
         colors:
             targetEntity: AppBundle\Entity\ShoeColor

@@ -12,6 +12,7 @@ AppBundle\Entity\Category:
         slug:
             type: string
             length: 100
+            unique: true
         position:
             type: integer
     oneToMany:
@@ -19,6 +20,8 @@ AppBundle\Entity\Category:
             targetEntity: AppBundle\Entity\Shoe
             mappedBy: category
     manyToOne:
-        gender:
-            targetEntity: AppBundle\Entity\Gender
-            inversedBy: categories
+        parent:
+            nullable: true
+            targetEntity: AppBundle\Entity\Category
+            joinColumn:
+                onDelete: CASCADE

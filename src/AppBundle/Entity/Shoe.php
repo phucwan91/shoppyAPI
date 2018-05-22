@@ -2,10 +2,16 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Annotation\Link;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @Serializer\ExclusionPolicy("all")
+ * @Link(
+ *     "self",
+ *     route="app.shoe.detail",
+ *     params={"slug": "object.getSlug()"}
+ * )
  */
 class Shoe
 {
@@ -29,6 +35,7 @@ class Shoe
     /**
      * @var string
      * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $name;
 
@@ -60,6 +67,16 @@ class Shoe
      * @Serializer\Expose()
      */
     private $position;
+
+    /**
+     * @var int
+     */
+    private $featuredPriority;
+
+    /**
+     * @var int
+     */
+    private $salesCount;
 
     /**
      * @var \DateTime
@@ -238,5 +255,37 @@ class Shoe
     public function setReleaseDate($releaseDate)
     {
         $this->releaseDate = $releaseDate;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFeaturedPriority()
+    {
+        return $this->featuredPriority;
+    }
+
+    /**
+     * @param int $featuredPriority
+     */
+    public function setFeaturedPriority($featuredPriority)
+    {
+        $this->featuredPriority = $featuredPriority;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSalesCount()
+    {
+        return $this->salesCount;
+    }
+
+    /**
+     * @param int $salesCount
+     */
+    public function setSalesCount($salesCount)
+    {
+        $this->salesCount = $salesCount;
     }
 }

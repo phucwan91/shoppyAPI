@@ -17,7 +17,7 @@ class Category
     /**
      * @var string
      * @Serializer\Expose()
-     * @Serializer\Groups({"detail"})
+     * @Serializer\Groups({"init", "detail"})
      */
     private $name;
 
@@ -29,9 +29,16 @@ class Category
     private $slug;
 
     /**
-     * @var Gender
+     * @var Category
      */
-    private $gender;
+    private $parent;
+
+    /**
+     * @var Category[]
+     * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
+     */
+    private $children;
 
     /**
      * @var Shoe[]
@@ -40,6 +47,8 @@ class Category
 
     /**
      * @var int
+     * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $position;
 
@@ -84,22 +93,6 @@ class Category
     }
 
     /**
-     * @return Gender
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    /**
-     * @param Gender $gender
-     */
-    public function setGender($gender)
-    {
-        $this->gender = $gender;
-    }
-
-    /**
      * @return Shoe[]
      */
     public function getShoes()
@@ -129,5 +122,37 @@ class Category
     public function setPosition($position)
     {
         $this->position = $position;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param Category $parent
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+    }
+
+    /**
+     * @return Category[]
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param Category[] $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
     }
 }

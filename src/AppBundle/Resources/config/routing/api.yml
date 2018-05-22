@@ -10,6 +10,6 @@ app.shoe.list:
     path: /shoes/list
     defaults: { _controller: AppBundle:Shoe:list }
 
-app.shoe.single:
+app.shoe.detail:
     path: /shoes/{slug}/detail
     defaults: { _controller: AppBundle:Shoe:list }
