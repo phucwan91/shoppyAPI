@@ -20,72 +20,102 @@ class ShoeColorImage
     private $shoeColor;
 
     /**
-     * @var string
+     * @var int
      * @Serializer\Expose()
      * @Serializer\Groups({"init"})
      */
-    private $small;
-
-    /**
-     * @var string
-     * @Serializer\Expose()
-     * @Serializer\Groups({"init"})
-     */
-    private $medium;
+    private $position;
 
     /**
      * @var string
      * @Serializer\Expose()
      * @Serializer\Groups({"init"})
      */
-    private $large;
+    private $sm;
+
+    /**
+     * @var string
+     * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
+     */
+    private $md;
+
+    /**
+     * @var string
+     * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
+     */
+    private $lg;
+
+    /**
+     * @var string
+     * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
+     */
+    private $xl;
 
     /**
      * @return string
      */
-    public function getSmall()
+    public function getSm()
     {
-        return $this->small;
+        return $this->sm;
     }
 
     /**
-     * @param string $small
+     * @param string $sm
      */
-    public function setSmall($small)
+    public function setSm($sm)
     {
-        $this->small = $small;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMedium()
-    {
-        return $this->medium;
-    }
-
-    /**
-     * @param string $medium
-     */
-    public function setMedium($medium)
-    {
-        $this->medium = $medium;
+        $this->sm = $sm;
     }
 
     /**
      * @return string
      */
-    public function getLarge()
+    public function getMd()
     {
-        return $this->large;
+        return $this->md;
     }
 
     /**
-     * @param string $large
+     * @param string $md
      */
-    public function setLarge($large)
+    public function setMd($md)
     {
-        $this->large = $large;
+        $this->md = $md;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLg()
+    {
+        return $this->lg;
+    }
+
+    /**
+     * @param string $lg
+     */
+    public function setLg($lg)
+    {
+        $this->lg = $lg;
+    }
+
+    /**
+     * @return string
+     */
+    public function getXl()
+    {
+        return $this->xl;
+    }
+
+    /**
+     * @param string $xl
+     */
+    public function setXl($xl)
+    {
+        $this->xl = $xl;
     }
 
     /**
@@ -110,5 +140,21 @@ class ShoeColorImage
     public function setShoeColor($shoeColor)
     {
         $this->shoeColor = $shoeColor;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
     }
 }

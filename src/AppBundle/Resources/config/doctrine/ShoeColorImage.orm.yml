@@ -6,13 +6,18 @@ AppBundle\Entity\ShoeColorImage:
             type: integer
             generator: { strategy: AUTO }
     fields:
-        small:
+        position:
+            type: integer
+        sm:
             type: string
             length: 100
-        medium:
+        md:
             type: string
             length: 100
-        large:
+        lg:
+            type: string
+            length: 100
+        xl:
             type: string
             length: 100
     manyToOne:

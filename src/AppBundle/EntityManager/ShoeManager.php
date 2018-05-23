@@ -14,10 +14,16 @@ class ShoeManager extends AbstractManager
      */
     private $paginationFactory;
 
-    public function __construct(ManagerRegistry $registry, $class, PaginationFactory $paginationFactory)
+    /**
+     * @var CategoryManager
+     */
+    private $categoryManager;
+
+    public function __construct(ManagerRegistry $registry, $class, PaginationFactory $paginationFactory, CategoryManager $categoryManager)
     {
         parent::__construct($registry, $class);
         $this->paginationFactory = $paginationFactory;
+        $this->categoryManager = $categoryManager;
     }
 
     public function findAllQueryBuilder($limit, $offset)
@@ -30,7 +36,7 @@ class ShoeManager extends AbstractManager
 
     public function findByQueryBuilder(
         Category $category = null,
-        array $brand = [],
+        array $brands = [],
         $orderBy = null,
         $order = 'ASC',
         $limit,
@@ -39,13 +45,20 @@ class ShoeManager extends AbstractManager
         $qb = $this->findAllQueryBuilder($limit, $offset);
 
         if ($category) {
-            $qb->andWhere('shoe.category = :category')
-                ->setParameter('category', $category);
+            if (null === $category->getParent()) {
+                $category = $this->categoryManager->findBy(['parent' => $category]);
+
+                $qb->andWhere('shoe.category IN (:category)')
+                    ->setParameter('category', $category);
+            } else {
+                $qb->andWhere('shoe.category = :category')
+                    ->setParameter('category', $category);
+            }
         }
 
-        if ($brand) {
-            $qb->andWhere('shoe.brand = :brand')
-                ->setParameter('brand', $brand);
+        if ($brands) {
+            $qb->andWhere('shoe.brand IN (:brands)')
+                ->setParameter('brands', $brands);
         }
 
         if ($orderBy) {
@@ -67,12 +80,12 @@ class ShoeManager extends AbstractManager
         return $this->findAllQueryBuilder($limit, $offset)
             ->andWhere('shoe.featuredPriority > 0')
             ->orderBy('shoe.featuredPriority', 'DESC')
-            ->innerJoin('AppBundle:Brand', 'brand', 'WITH', 'shoe.brand = brand.id')
-            ->leftJoin('AppBundle:ShoeColor', 'shoeColor', 'WITH', 'shoe.id = shoeColor.shoe')
-            ->leftJoin('AppBundle:ShoeColorImage', 'shoeColorImage', 'WITH', 'shoeColor.id = shoeColorImage.shoeColor')
-            ->addSelect('brand')
-            ->addSelect('shoeColor')
-            ->addSelect('shoeColorImage')
+//            ->innerJoin('AppBundle:Brand', 'brand', 'WITH', 'shoe.brand = brand.id')
+//            ->join('AppBundle:ShoeColor', 'shoeColor', 'WITH', 'shoe.id = shoeColor.shoe')
+//            ->join('AppBundle:ShoeColorImage', 'shoeColorImage', 'WITH', 'shoeColor.id = shoeColorImage.shoeColor')
+//            ->addSelect('brand')
+//            ->addSelect('shoeColor')
+//            ->addSelect('shoeColorImage')
             ->getQuery()
             ->getResult()
         ;

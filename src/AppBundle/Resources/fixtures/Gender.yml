@@ -25,7 +25,7 @@ AppBundle\Entity\Shoe:
         price: '<numberBetween(1, 200)>'
         description: '<text(50)>'
         position: '<current()>'
-        releaseDate: '<dateTimeBetween("-200 days", "now")>'
+        releaseDate: '<date_create()>'
         featuredPriority: '<randomElement([0, 0, 0, 0, 0, 0, 0, 0, 0, 1])>'
         salesCount: '<numberBetween(0, 200)>'
         quantity: 0
@@ -43,8 +43,10 @@ AppBundle\Entity\ShoeColorSize:
         quantity: '<numberBetween(0, 25)>'
 
 AppBundle\Entity\ShoeColorImage:
-    image_{1..200}:
-        shoeColor: '@shoeColor_<current()>'
-        large: 'large_image.jpg'
-        medium: 'medium_image.png'
-        small: 'small_image.jpg'
+    image_{1..1000}:
+        shoeColor: '@shoeColor_*'
+        position: '<numberBetween(1, 10)>'
+        xl: '/assets/img/color<numberBetween(1,2)>/style<numberBetween(1,10)>/extra-large.jpg'
+        lg: '/assets/img/color<numberBetween(1,2)>/style<numberBetween(1,10)>/large.jpg'
+        md: '/assets/img/color<numberBetween(1,2)>/style<numberBetween(1,10)>/medium.jpg'
+        sm: '/assets/img/color<numberBetween(1,2)>/style<numberBetween(1,10)>/small.jpg'

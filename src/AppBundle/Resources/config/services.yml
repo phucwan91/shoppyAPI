@@ -9,7 +9,7 @@ services:
         class: AppBundle\EntityManager\BrandManager
         arguments:
             - '@doctrine'
-            - 'AppBundle\Entity\Category'
+            - 'AppBundle\Entity\Brand'
 
     app.manager.shoe:
         class: AppBundle\EntityManager\ShoeManager
@@ -17,6 +17,7 @@ services:
             - '@doctrine'
             - 'AppBundle\Entity\Shoe'
             - '@app.pagination_factory'
+            - '@app.manager.category'
 
     app.pagination_factory:
         class: AppBundle\Pagination\PaginationFactory

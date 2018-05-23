@@ -9,8 +9,8 @@ use JMS\Serializer\Annotation as Serializer;
  * @Serializer\ExclusionPolicy("all")
  * @Link(
  *     "self",
- *     route="app.shoe.detail",
- *     params={"slug": "object.getSlug()"}
+ *     route="app.shoe.list",
+ *     params={"category": "object.getSlug()"}
  * )
  */
 class Category

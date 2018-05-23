@@ -20,10 +20,30 @@ class ShoeController extends Controller
         $order    = $request->query->get('order');
         $offset   = $limit * ($page - 1);
 
-        $categories = $this->get('app.manager.category')->findAll();
+        $categoryManager = $this->get('app.manager.category');
+        $brandManager = $this->get('app.manager.brand');
+        $shoeManager = $this->get('app.manager.shoe');
+
+//        $categories = $this->get('app.manager.category')->findAll();
 //        $allBrands = $this->get('app.manager.brand')->findAll();
 
-        $shoeManager = $this->get('app.manager.shoe');
+        if ($category) {
+            /** @var Category $category */
+            $category = $categoryManager->findOneBy(['slug' => $category]);
+
+            if (!$category) {
+                return [];
+            }
+        }
+
+        if ($brands) {
+            $brands = $brandManager->findBy(['slug' => $brands]);
+
+            if (empty($brands)) {
+                return [];
+            }
+        }
+
         $qb = $shoeManager->findByQueryBuilder($category, $brands, $orderBy, $order, $limit, $offset);
 
         return new Response(
