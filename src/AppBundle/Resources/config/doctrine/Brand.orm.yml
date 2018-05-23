@@ -12,7 +12,12 @@ AppBundle\Entity\Brand:
         slug:
             type: string
             length: 100
+            gedmo:
+                slug:
+                    separator: -
+                    fields:
+                        - name
     oneToMany:
         shoes:
-            targetEntity: Shoe
-            mappedBy: category
+            targetEntity: AppBundle\Entity\Shoe
+            mappedBy: brand

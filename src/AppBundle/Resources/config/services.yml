@@ -5,6 +5,12 @@ services:
             - '@doctrine'
             - 'AppBundle\Entity\Category'
 
+    app.manager.brand:
+        class: AppBundle\EntityManager\BrandManager
+        arguments:
+            - '@doctrine'
+            - 'AppBundle\Entity\Category'
+
     app.manager.shoe:
         class: AppBundle\EntityManager\ShoeManager
         arguments:

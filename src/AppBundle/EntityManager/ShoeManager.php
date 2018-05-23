@@ -2,6 +2,7 @@
 
 namespace AppBundle\EntityManager;
 
+use AppBundle\Entity\Category;
 use AppBundle\Pagination\PaginationFactory;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,34 +22,57 @@ class ShoeManager extends AbstractManager
 
     public function findAllQueryBuilder($limit, $offset)
     {
-        return $this->createQueryBuilder('item')
+        return $this->createQueryBuilder('shoe')
             ->setMaxResults($limit)
             ->setFirstResult($offset)
-            ->orderBy('item.position')
         ;
+    }
+
+    public function findByQueryBuilder(
+        Category $category = null,
+        array $brand = [],
+        $orderBy = null,
+        $order = 'ASC',
+        $limit,
+        $offset
+    ) {
+        $qb = $this->findAllQueryBuilder($limit, $offset);
+
+        if ($category) {
+            $qb->andWhere('shoe.category = :category')
+                ->setParameter('category', $category);
+        }
+
+        if ($brand) {
+            $qb->andWhere('shoe.brand = :brand')
+                ->setParameter('brand', $brand);
+        }
+
+        if ($orderBy) {
+            $qb->orderBy('shoe.'.$orderBy, $order);
+        }
+
+        return $qb;
     }
 
     public function findAllOrderedByPositionQueryBuilder($limit, $offset)
     {
         return $this->findAllQueryBuilder($limit, $offset)
-            ->orderBy('item.position')
+            ->orderBy('shoe.position')
         ;
-    }
-
-    public function getPaginatedCollection(Request $request)
-    {
-        $itemsPerPage = $request->query->get('itemsPerPage', 10);
-        $page = $request->query->get('page', 1);
-
-        $qb = $this->findAllQueryBuilder($itemsPerPage, ($page*($itemsPerPage-1)));
-
-        return $this->paginationFactory->createCollection($qb, $request, $itemsPerPage, $page, 'app.shoe.list');
     }
 
     public function findFeaturedShoes($limit, $offset)
     {
         return $this->findAllQueryBuilder($limit, $offset)
-            ->andWhere('item.featuredPriority = 0')
+            ->andWhere('shoe.featuredPriority > 0')
+            ->orderBy('shoe.featuredPriority', 'DESC')
+            ->innerJoin('AppBundle:Brand', 'brand', 'WITH', 'shoe.brand = brand.id')
+            ->leftJoin('AppBundle:ShoeColor', 'shoeColor', 'WITH', 'shoe.id = shoeColor.shoe')
+            ->leftJoin('AppBundle:ShoeColorImage', 'shoeColorImage', 'WITH', 'shoeColor.id = shoeColorImage.shoeColor')
+            ->addSelect('brand')
+            ->addSelect('shoeColor')
+            ->addSelect('shoeColorImage')
             ->getQuery()
             ->getResult()
         ;

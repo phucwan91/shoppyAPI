@@ -2,7 +2,7 @@
 
 namespace AppBundle\EntityManager;
 
-class GenderManager extends AbstractManager
+class BrandManager extends AbstractManager
 {
 
 }

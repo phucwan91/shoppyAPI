@@ -18,3 +18,4 @@ AppBundle\Entity\ShoeColorImage:
     manyToOne:
         shoeColor:
             targetEntity: AppBundle\Entity\ShoeColor
+            inversedBy: images

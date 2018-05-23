@@ -7,9 +7,9 @@ app.init:
     defaults: { _controller: AppBundle:Default:init }
 
 app.shoe.list:
-    path: /shoes/list
+    path: /shoes
     defaults: { _controller: AppBundle:Shoe:list }
 
 app.shoe.detail:
-    path: /shoes/{slug}/detail
-    defaults: { _controller: AppBundle:Shoe:list }
+    path: /shoes/{slug}
+    defaults: { _controller: AppBundle:Shoe:detail }

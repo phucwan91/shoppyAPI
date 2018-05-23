@@ -20,14 +20,23 @@ class ShoeColor
     private $shoe;
 
     /**
-     * @var Color
+     * @var string
      * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
-    private $color;
+    private $name;
+
+    /**
+     * @var string
+     * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
+     */
+    private $code;
 
     /**
      * @var ShoeColorImage[]
      * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $images;
 
@@ -70,22 +79,6 @@ class ShoeColor
     }
 
     /**
-     * @return Color
-     */
-    public function getColor()
-    {
-        return $this->color;
-    }
-
-    /**
-     * @param Color $color
-     */
-    public function setColor($color)
-    {
-        $this->color = $color;
-    }
-
-    /**
      * @return ShoeColorImage[]
      */
     public function getImages()
@@ -116,4 +109,37 @@ class ShoeColor
     {
         $this->sizes = $sizes;
     }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
 }

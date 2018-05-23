@@ -13,3 +13,4 @@ AppBundle\Entity\ShoeColorSize:
     manyToOne:
         shoeColor:
             targetEntity: AppBundle\Entity\ShoeColor
+            inversedBy: sizes

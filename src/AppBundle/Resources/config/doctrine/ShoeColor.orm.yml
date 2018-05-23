@@ -5,16 +5,23 @@ AppBundle\Entity\ShoeColor:
         id:
             type: integer
             generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 100
+        code:
+            type: string
+            length: 100
     oneToMany:
         images:
             targetEntity: AppBundle\Entity\ShoeColorImage
             mappedBy: shoeColor
+            fetch: EAGER
         sizes:
             targetEntity: AppBundle\Entity\ShoeColorSize
             mappedBy: shoeColor
+            fetch: EAGER
     manyToOne:
         shoe:
             targetEntity: AppBundle\Entity\Shoe
-            inversedBy: shoes
-        color:
-            targetEntity: AppBundle\Entity\Color
+            inversedBy: colors

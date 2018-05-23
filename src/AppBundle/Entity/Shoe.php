@@ -23,12 +23,14 @@ class Shoe
     /**
      * @var int
      * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $category;
 
     /**
      * @var Brand
      * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $brand;
 
@@ -47,6 +49,7 @@ class Shoe
     /**
      * @var float
      * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $price;
 
@@ -59,17 +62,21 @@ class Shoe
     /**
      * @var ShoeColor[]
      * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $colors;
 
     /**
      * @var int
      * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $position;
 
     /**
      * @var int
+     * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $featuredPriority;
 
@@ -81,6 +88,7 @@ class Shoe
     /**
      * @var \DateTime
      * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $releaseDate;
 

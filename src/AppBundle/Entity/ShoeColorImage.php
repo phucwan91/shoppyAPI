@@ -22,18 +22,21 @@ class ShoeColorImage
     /**
      * @var string
      * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $small;
 
     /**
      * @var string
      * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $medium;
 
     /**
      * @var string
      * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $large;
 

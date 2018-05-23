@@ -15,13 +15,20 @@ class Brand
     /**
      * @var string
      * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
      */
     private $name;
 
-    /** @var string */
+    /**
+     * @var string
+     * @Serializer\Expose()
+     * @Serializer\Groups({"init"})
+     */
     private $slug;
 
-    /** @var Shoe[] */
+    /**
+     * @var Shoe[]
+     */
     private $shoes;
 
     /**

@@ -2,10 +2,16 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Annotation\Link;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @Serializer\ExclusionPolicy("all")
+ * @Link(
+ *     "self",
+ *     route="app.shoe.detail",
+ *     params={"slug": "object.getSlug()"}
+ * )
  */
 class Category
 {
