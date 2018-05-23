@@ -30,3 +30,8 @@ services:
             - '@annotations.reader'
         tags:
             - { name: jms_serializer.event_subscriber }
+
+    app.cors_listener:
+        class: AppBundle\EventListener\CorsListener
+        tags:
+           - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
